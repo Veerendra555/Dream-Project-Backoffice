@@ -1,0 +1,207 @@
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6">
+               <h2>Cancelled Order Details </h2>
+            </div>
+            <!-- <div class="col-md-8">
+                <button class="btn btn-success" [routerLink]="['/add-categories']" style="float:right;">+ Categories</button>
+            </div> -->
+        </div>
+        <form #dateForm='ngForm' novalidate (ngSubmit)="dataSubmit()">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="form-group form-row">
+                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">From<span class="star">*</span></label>                     
+                <div class="col-md-8 col-sm-8 mb-3">
+                    <input type="date" class="form-control form-control-sm"  name='fromDt'  [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="data.fromDt" #fromDt="ngModel" required>
+        
+                    <div *ngIf="fromDt.invalid && (fromDt.dirty || fromDt.touched)" class="form-text text-danger">
+                        <div *ngIf="fromDt.errors.required"> From Date is required. </div>
+                    </div>
+                </div>
+         </div>
+               
+            </div>
+            <div class="col-md-5">
+              <div class="form-group form-row">
+                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">To<span class="star">*</span></label>                     
+                <div class="col-md-8 col-sm-8 mb-3">
+                    <input type="date" class="form-control form-control-sm"  name='toDt'  [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="data.toDt" #toDt="ngModel" required>
+        
+                    <div *ngIf="toDt.invalid && (toDt.dirty || toDt.touched)" class="form-text text-danger">
+                        <div *ngIf="toDt.errors.required"> To Date is required. </div>
+                    </div>
+                </div>
+         </div>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-primary mr-2 btn-sm" style="margin-left: 45%;" [disabled]="dateForm.invalid">Search</button>
+            </div>
+          </div>
+          </form>
+
+    </div>
+    <div class="card-body">
+       <div class="table-responsive">
+        <table  class="table table-striped table-sm row-border hover" datatable   [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+               <thead style="background-color:#fb9013;">
+                   <tr>
+                    <th>
+                        Number
+                    </th>
+                    <th>
+                      Order Id
+                  </th>
+                    <th>
+                      Name
+                 </th>
+                 <th>
+                     Phone
+                </th>
+                <th>
+                   Units
+                </th>
+                    <th>
+                         Amount
+                   </th>
+                   <th>Order Date</th>
+                  
+               <!-- <th>status</th> -->
+               <th>View</th>
+           
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of ordersData;let i = index;">
+                    <td >{{i+1}}</td>
+                    <td >{{order?.orderId}}</td>
+                    <td>{{order?.user?.firstName}}</td>
+                    <td>{{order?.user?.phone}}</td>
+                    <td>{{order?.totalUnits | number : '1.0-0'}}</td>
+                    <td>{{order?.orderTotalAmount | number : '1.0-0'}}</td>
+                    <td>{{order?.createdAt |  date: 'dd/MM/yyyy'}}</td>
+           
+                    <td>
+                      <!-- <img  src="assets/images/edit.png"  height="25px" (click)="editData(order._id)"  /> -->
+                      <!-- <img  src="assets/images/delete.png" (click)="deleteOrder(order._id)"  height="25px"  />   -->
+                      <img  src="assets/images/eye.png"  (click)="openXl(content,order)"  height="30px"  />  
+                  </td>
+                </tr>
+               </tbody>
+           </table>
+        </div> 
+    </div>
+</div>  
+
+
+<!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
+ 
+<ng-template #content let-c="close" let-d="dismiss">
+   <div class="modal-header">
+     <h4 class="modal-title" id="modal-basic-title">Order Details</h4>
+     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+       <span aria-hidden="true">&times;</span>
+     </button>
+   </div>
+   <div class="modal-body">
+    <!-- <div class="row">
+      <div class="col-md-3">
+       <b>User Name</b>
+      </div>
+      <div class="col-md-9">
+        {{selectedObj.user?.firstName}}
+      </div>
+    </div>
+    <div class="row">
+     <div class="col-md-3">
+      <b>Units</b>
+     </div>
+     <div class="col-md-9">
+       {{selectedObj.totalUnits}}
+     </div>
+   </div>
+   <div class="row">
+    <div class="col-md-3">
+     <b>Amount</b>
+    </div>
+    <div class="col-md-9">
+      {{selectedObj.orderTotalAmount}}
+    </div>
+  </div>
+  <div class="row">
+   <div class="col-md-3">
+    <b>Order Date</b>
+   </div>
+   <div class="col-md-9">
+     {{selectedObj.createdAt}}
+   </div>
+ </div> -->
+ <div class="card-body">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="bdr-right bdr-left bdr-top bdr-bottom mb-3">
+        <table class="table">
+          <thead>
+            <tr>
+                <th colspan="5">
+                    Order Total
+                    <!-- <img src="../../../assets/images/Palace logo.png" class="cart-brand-pic"> -->
+                </th>
+                <th colspan="5" class="text-end">$ {{totalAmt | number : '1.2-2'}}</th>
+            </tr>
+            <tr>
+              <th colspan="5">Total Units </th> 
+              <th colspan="5" class="text-end">{{ unitTotalCount | number}} </th>                                                               
+            </tr>
+          </thead>
+            <tbody>
+            <tr>
+              <th colspan="2">Product</th>
+              <th>Order Number</th>
+              <!-- <th>Units</th> -->
+              <th>Price</th>
+              <th>MOQ</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+              <tr *ngFor="let data of cartProductData;let i = index">
+                  <td>
+                      <img src="{{data.product.productImgURL}}" width="50">
+                  </td>
+                  <td>
+                      <div class="mb-2"><b>{{data.product.productName}}</b></div>
+                     <div> 
+                      <!-- <a href="" class="text-success">Edit</a> -->
+                      <a (click)="deleteCartProductByUserId(i)" class="ml-2 text-danger">Remove</a>
+                  </div>
+                  </td>
+                  <td>FH27382{{i}}</td>
+                  <!-- <td>10</td> -->
+                  <td>₹ {{data.product.productPrice}}</td>
+                  <td>{{data.product.moq}}</td>
+                  <td>
+                      {{data.quantity}}
+                  </td>
+                  <td>₹{{data.quantity * data.product.productPrice}}</td>                                    
+              </tr>
+              <!-- <tr>
+                  <td colspan="8" class="text-end">
+                      <a href="">View All</a>
+                  </td>
+              </tr> -->
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+</div>
+
+   </div>
+   <div class="modal-footer">
+     <button type="button" class="btn btn-outline-dark" (click)="c(selectedObj)">Ok</button>
+   </div>
+ </ng-template>
+ 

@@ -1,0 +1,121 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Banners</h2>
+        </div>
+        <div class="col-md-6">
+             <button class="btn btn-warning btnbanner" (click)="changeStatus()" >+ Add Banner</button>
+        </div>
+    </div>
+    <div class="card mb-4" *ngIf="bannerStatus">
+        <div class="card-body">
+           <form #bannerForm='ngForm' novalidate (ngSubmit)="formSubmit(bannerForm)">
+           
+            <div class="form-group form-row">
+                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Banner Name</label>                     
+                <div class="col-md-8 col-sm-8 mb-3">
+                    <input type="text" class="form-control form-control-sm"  name='bannerName'
+                        [(ngModel)]="banner.bannerName" #bannerName="ngModel" required>
+                    <div *ngIf="bannerName.invalid && (bannerName.dirty || bannerName.touched)" class="form-text text-danger">
+                        <div *ngIf="bannerName.errors.required"> Banner Name is required. </div>
+                    </div>
+                </div>
+         </div>
+
+           <div class="form-group form-row">
+               <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Banner Image</label>                     
+               <div class="col-md-8 col-sm-8 mb-3">
+                   <input type="file" class="form-control form-control-sm"  name='bannerUrl'
+                       [(ngModel)]="banner.bannerUrl" #bannerUrl="ngModel" (change)="selectFile($event)" required>
+                    <!--<div *ngIf="uploadsStatus">
+                       <img src="assets/images/loader.gif"  style="display: inline;"  width="5%" alt="loader" >Uploading...
+                   </div>-->
+                       <div *ngIf="bannerUrl.invalid && (bannerUrl.dirty || bannerUrl.touched)" class="form-text text-danger">
+                       <div *ngIf="bannerUrl.errors.required"> Image  is required. </div>
+                   </div>
+               </div>
+        </div>
+        <div class="row">
+            <button class="btn btn-primary" type="button" disabled *ngIf="uploadsStatus" style="margin-left: 40%;" >
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading...
+              </button>
+           <button class="btn btn-primary mr-2" style="margin-left: 40%;" [disabled]="bannerForm.invalid"  *ngIf="!uploadsStatus">Submit</button>
+           <a class="btn btn-danger"  (click)="changeStatus()" >Hide</a>
+       </div>
+             </form>
+        </div>
+    </div>
+    <!-- <div class="card mb-3" *ngFor="let data of bannerData">
+       <img src="{{data.bannerUrl}}" class="card-img-top" alt="{{data.bannerName}}" width="50%">
+       <div class="card-body">
+         <h5 class="card-title">{{data.bannerName}}</h5>
+         <p class="card-text"><small class="text-muted">Uploads At {{data.createdAt | date}}</small></p>
+         <b>Status :<button class="btn btn-success ml-2" (click)="changeBannerStatus(data)" *ngIf="data.isActive">Active</button>
+           <button class="btn btn-danger ml-2" (click)="changeBannerStatus(data)"  *ngIf="!data.isActive">In Active</button>
+        </b> 
+        </div>
+     </div> -->
+     <!-- <div class="row">
+         <div class="col-md-4 mb-2" *ngFor="let data of bannerData">
+           <div class="card" style="width: 18rem;">
+       <img src="{{data.bannerUrl}}" class="card-img-top" alt="{{data.bannerName}}" >
+               <div class="card-body bg-color">
+                   <h5 class="card-title">{{data.bannerName}}</h5> 
+                   <p class="card-text"><small class="text-muted">Uploads At {{data.createdAt | date}}</small></p>
+         <b>Status :<button class="btn btn-success ml-2" (click)="changeBannerStatus(data)" *ngIf="data.isActive">Active</button>
+           <button class="btn btn-danger ml-2" (click)="changeBannerStatus(data)"  *ngIf="!data.isActive">In Active</button>
+        </b> 
+               </div>
+             </div>
+         </div>
+     </div> -->
+
+
+
+
+
+
+   <!-- Topic Cards -->
+   <div id="cards_landscape_wrap-2">
+       <div class="container">
+           <div class="row">
+               <div class="col-xs-4 col-sm-12 col-md-4 col-lg-4"  *ngFor="let data of bannerData">
+                   <a >
+                       <div class="card-flyer">
+                           <div class="text-box">
+                               <div class="image-box">
+               <img src="{{data.bannerUrl}}" class="card-img-top" alt="{{data.bannerName}}"  (click)="open(content,data.bannerImageUrl)" width="50%">
+                               </div>
+                               <div class="text-container">
+                                   <h6>{{data.bannerName}}</h6>
+                                   <p class="card-text"><small class="text-muted">Uploads At {{data.createdAt | date}}</small></p>
+                                   <b>Status :<button class="btn btn-success ml-2 mr-4" (click)="changeBannerStatus(data)" *ngIf="data.isActive">Active</button>
+                                       <button class="btn btn-danger ml-2 mr-4" (click)="changeBannerStatus(data)"  *ngIf="!data.isActive">In Active</button>
+                                       </b> 
+                                       <img  src="assets/images/delete.png" (click)="deleteBanner(data)"  height="30px"  />  
+                               </div>
+                           </div>
+                       </div>
+                   </a>
+               </div>
+           </div>
+       </div>
+   </div>
+
+
+
+
+   <ng-template #content let-c="close" let-d="dismiss">
+       <div class="modal-body">
+        <img  src="{{selectedObj.path}}" width="100%" height="550vh" alt="subCategories Image"/>
+       </div>
+     </ng-template> 
+
+
+
+
+
+
+
+</div>

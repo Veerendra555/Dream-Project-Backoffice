@@ -1,0 +1,231 @@
+<div class="page-content-header">
+    <h3>{{ id == null  ? "ADD " : "UPDATE " }} Client</h3>
+</div>
+<div class="page-content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card overall-contentblock">
+                    <div class="card-body">
+                        <form #clientForm='ngForm' novalidate (ngSubmit)="formSubmit(clientForm)">
+                            <div class="form-group form-row">
+                                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Client Name</label>                     
+                                <div class="col-md-8 col-sm-8 mb-3">
+                                    <input type="text" class="form-control form-control-sm"  name='clientName'
+                                        [(ngModel)]="client.clientName" #clientName="ngModel" required>
+                        
+                                    <div *ngIf="clientName.invalid && (clientName.dirty || clientName.touched)" class="form-text text-danger">
+                                        <div *ngIf="clientName.errors.required"> client Name is required. </div>
+                                    </div>
+                                </div>
+                         </div>
+                    
+                         <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Partner Name</label>                     
+                            <div class="col-md-8 col-sm-8 mb-3">
+                                <input type="text" class="form-control form-control-sm"  name='partnerName'
+                                    [(ngModel)]="client.partnerName" #partnerName="ngModel" required>
+                    
+                                <div *ngIf="partnerName.invalid && (partnerName.dirty || partnerName.touched)" class="form-text text-danger">
+                                    <div *ngIf="partnerName.errors.required">Partner Name is required. </div>
+                                </div>
+                            </div>
+                     </div>
+                     <div class="form-group form-row">
+                        <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Phone Number</label>                     
+                        <div class="col-md-8 col-sm-8 mb-3">
+                            <input type="text" class="form-control form-control-sm"  name='phone'
+                                [(ngModel)]="client.phone" #phone="ngModel" required>
+                
+                            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="form-text text-danger">
+                                <div *ngIf="phone.errors.required">Phone Number is required. </div>
+                            </div>
+                        </div>
+                 </div>
+
+                     <div class="form-group form-row">
+                        <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Marriage Date</label>                     
+                        <div class="col-md-8 col-sm-8 mb-3">
+                            <input type="date" class="form-control form-control-sm"  name='marriageDate'
+                                [(ngModel)]="client.marriageDate" #marriageDate="ngModel" required>
+                                </div>
+                                </div>
+
+                                <div class="form-group form-row">
+                                    <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Marriage Time</label>                     
+                                    <div class="col-md-8 col-sm-8 mb-3">
+                                        <input type="time" class="form-control form-control-sm"  name='marriageTime'
+                                            [(ngModel)]="client.marriageTime" #marriageTime="ngModel" required>
+                                            </div>
+                                            </div>
+                                            <div class="form-group form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Timer</label>                     
+                                                <div class="col-md-8 col-sm-8 mb-3">
+                                                    <input type="datetime-local" class="form-control form-control-sm"  name='marriageTimer'
+                                                        [(ngModel)]="client.marriageTimer" #marriageTimer="ngModel" required>
+                                                        </div>
+                                                        </div>
+                                            <div class="form-group form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Banner Image 1</label>                     
+                                                <div class="col-md-8 col-sm-8 mb-3">
+                                                    <!--   -->
+                                                    <input #myInput type="file" class="form-control form-control-sm"  name='imageUrl'
+                                                        [(ngModel)]="client.imageUrl" #imageUrl="ngModel" (change)="selectFile($event, 'banner' , 'banner1' )">
+                                                        <!-- <img width="100%" *ngIf="imageUrl" [src]="client.imageUrl" class="image">
+                                                         -->
+                                                        <div *ngIf="banner1" class="mt-2 ml-2">
+                                                            <img src="{{banner1}}"   width="10% m-2" alt="loader" (click)="open(content,banner1,'image')" >
+                                                        </div>
+                                                        <!-- <div *ngIf="uploadsStatus">
+                                                            <img src="assets/images/loader.gif"  style="display: inline;"  width="5%" alt="loader" >Uploading...
+                                                        </div> -->
+                                                    <div *ngIf="imageUrl.invalid && (imageUrl.dirty || imageUrl.touched)" class="form-text text-danger">
+                                                        <div *ngIf="imageUrl.errors.required"> Image  is required. </div>
+                                                    </div>
+                                                  
+                                                </div>
+                                                
+                                            </div>
+
+                                            <div class="form-group form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Banner Image 2</label>                     
+                                                <div class="col-md-8 col-sm-8 mb-3">
+                                                    <!--   -->
+                                                    <input  #myInput type="file" class="form-control form-control-sm"  name='imageUrl'
+                                                        [(ngModel)]="client.imageUrl" #imageUrl="ngModel" (change)="selectFile($event , 'banner' , 'banner2')">
+                                                        <div *ngIf="banner2" class="mt-2 ml-2">
+                                                            <img src="{{banner2}}"  style="display: inline;"  width="5%" alt="loader" >Uploading...
+                                                        </div>
+                                                        <!-- <div *ngIf="uploadsStatus">
+                                                            <img src="assets/images/loader.gif"  style="display: inline;"  width="5%" alt="loader" >Uploading...
+                                                        </div> -->
+                                                    <div *ngIf="imageUrl.invalid && (imageUrl.dirty || imageUrl.touched)" class="form-text text-danger">
+                                                        <div *ngIf="imageUrl.errors.required"> Image  is required. </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+
+                                                
+                                            <div class="form-group form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Carousel 1</label>                     
+                                                <div class="col-md-8 col-sm-8 mb-3">
+                                                    <!--   -->
+                                                    <input  #myInput type="file" class="form-control form-control-sm"  name='imageUrl'
+                                                        [(ngModel)]="client.imageUrl" #imageUrl="ngModel" (change)="selectFile($event, 'carousel','carousel1')">
+                                                        <div *ngIf="carousel1" class="mt-2 ml-2">
+                                                            <img src="{{carousel1}}"  style="display: inline;"  width="10%" alt="loader" >
+                                                        </div>
+                                                    <div *ngIf="imageUrl.invalid && (imageUrl.dirty || imageUrl.touched)" class="form-text text-danger">
+                                                        <div *ngIf="imageUrl.errors.required"> Image  is required. </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                            <div class="form-group form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Carousel 2</label>                     
+                                                <div class="col-md-8 col-sm-8 mb-3">
+                                                    <!--   -->
+                                                    <input  #myInput type="file" class="form-control form-control-sm"  name='imageUrl'
+                                                        [(ngModel)]="client.imageUrl" #imageUrl="ngModel" (change)="selectFile($event, 'carousel','carousel2')">
+                                                        <div *ngIf="carousel2" class="mt-2 ml-2">
+                                                            <img src="{{carousel2}}"  style="display: inline;"  width="10%" alt="loader" >
+                                                        </div>
+                                                        <!-- <div *ngIf="uploadsStatus">
+                                                            <img src="assets/images/loader.gif"  style="display: inline;"  width="5%" alt="loader" >Uploading...
+                                                        </div> -->
+                                                    <div *ngIf="imageUrl.invalid && (imageUrl.dirty || imageUrl.touched)" class="form-text text-danger">
+                                                        <div *ngIf="imageUrl.errors.required"> Image  is required. </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        
+                                            <div class="form-group form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Carousel 3</label>                     
+                                                <div class="col-md-8 col-sm-8 mb-3">
+                                                    <!--   -->
+                                                    <input  #myInput type="file" class="form-control form-control-sm"  name='imageUrl'
+                                                        [(ngModel)]="client.imageUrl" #imageUrl="ngModel" (change)="selectFile($event,'carousel' , 'carousel3')">
+                                                        <div *ngIf="carousel3" class="mt-2 ml-2">
+                                                            <img src="{{carousel3}}"  style="display: inline;"  width="10%" alt="loader" >
+                                                        </div>
+                                                        <!-- <div *ngIf="uploadsStatus">
+                                                            <img src="assets/images/loader.gif"  style="display: inline;"  width="5%" alt="loader" >Uploading...
+                                                        </div> -->
+                                                    <div *ngIf="imageUrl.invalid && (imageUrl.dirty || imageUrl.touched)" class="form-text text-danger">
+                                                        <div *ngIf="imageUrl.errors.required"> Image  is required. </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="form-group form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Carousel 4</label>                     
+                                                <div class="col-md-8 col-sm-8 mb-3">
+                                                    <!--   -->
+                                                    <input  #myInput type="file" class="form-control form-control-sm"  name='imageUrl'
+                                                        [(ngModel)]="client.imageUrl" #imageUrl="ngModel" (change)="selectFile($event,'carousel','carousel4')">
+                                                        <div *ngIf="carousel4" class="mt-2 ml-2">
+                                                            <img src="{{carousel4}}"  style="display: inline;"  width="5%" alt="loader" >
+                                                        </div>
+                                                        <!-- <div *ngIf="uploadsStatus">
+                                                            <img src="assets/images/loader.gif"  style="display: inline;"  width="5%" alt="loader" >Uploading...
+                                                        </div> -->
+                                                    <div *ngIf="imageUrl.invalid && (imageUrl.dirty || imageUrl.touched)" class="form-text text-danger">
+                                                        <div *ngIf="imageUrl.errors.required"> Image  is required. </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                             
+                                               
+                                            <button class="btn btn-primary" type="button" disabled *ngIf="uploadsStatus" style="margin-left: 40%;" >
+                                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                                Loading...
+                                              </button>
+                                              <div class="form-group form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Color Picker</label> 
+                                                             
+                                                <div class="col-md-8 col-sm-8 mb-3">
+                                                    <input type="color" id="head" name="head" value="#e66465"  [(ngModel)]="client.colorCode" #colorCode="ngModel"/>      
+                                            </div>
+                                            </div>
+                                          
+                                            <div class="form-group form-row">
+                                                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Video</label> 
+                                                             
+                                                <div class="col-md-8 col-sm-8 mb-3">
+
+                                            <input type="file" id="movie" name="movie" accept="video/*" (change)="selectVideoFile($event,'video')"/>
+                                            </div>
+                                            </div>
+                                         
+                       
+                                            
+                        <div class="row">
+                           
+                           
+                            <button class="btn btn-primary mr-2" style="margin-left: 40%;" [disabled]="clientForm.invalid">
+                                Submit</button>
+                                <a class="btn btn-danger" (click)="backClicked()">Back</a>
+                        </div>
+                        </form>   
+                     
+                           
+                 </div>
+               </div>
+               </div>
+        </div>
+  </div>
+</div>
+
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-body">
+     <img  src="{{selectedObj.path}}" width="100%" height="100%" alt="subCategories Image"/>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-danger" (click)="c(selectedObj)">CLose</button>
+    </div>
+  </ng-template> 

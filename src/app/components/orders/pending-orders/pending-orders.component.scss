@@ -1,0 +1,48 @@
+#review-block{
+    padding: 50px 85px;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+}
+#review-block h1{
+    font-family: "Montserrat", Sans-serif;
+    font-size: 35px;
+    font-weight: 700;
+    color: #000027;
+}
+#review-block h5{
+    font-size: 20px;
+    font-weight: 700;
+    color:#f26522;
+}
+.table-bdr-rds{
+    border:1px solid #dee2e6;
+    border-radius: .375rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+table{
+    margin-bottom: 0;
+}
+tbody{
+    font-size: 14px;
+    line-height: 1.2;
+    border-top: 1px solid #dee2e6!important;
+    /* border-bottom: 0px solid #dee2e6!important; */
+}
+tbody tr:last-child td{
+    border-bottom: 0px solid #dee2e6!important;
+}
+tbody td{
+
+    /* border-bottom: 0px solid #dee2e6!important; */
+    vertical-align: middle;
+   
+}
+.no-tab-bdr td{
+    border: 0;
+}
+.no-tab-bdr tr:last-child td{
+    border-top:1px solid #dee2e6;
+}
+.ml-2{
+    margin-left: 20px;
+}

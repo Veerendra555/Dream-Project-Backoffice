@@ -1,0 +1,283 @@
+<div class="page-content-header">
+    <h3>{{ id == null  ? "Add " : "Update " }} Product</h3>
+</div>
+<div class="page-content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card overall-contentblock">
+
+                    <div class="card-body">
+                        <form #productForm='ngForm' novalidate (ngSubmit)="formSubmit(productForm)">
+                          
+                            <div class="form-group form-row">
+                                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Product Name</label>                     
+                                <div class="col-md-8 col-sm-8 mb-3">
+                                    <input type="text" class="form-control form-control-sm"  name='productName'
+                                        [(ngModel)]="productData.productName" #productName="ngModel" required>
+                        
+                                    <div *ngIf="productName.invalid && (productName.dirty || productName.touched)" class="form-text text-danger">
+                                        <div *ngIf="productName.errors.required">Product Name is required. </div>
+                                    </div>
+                                </div>
+                         </div>
+
+                         
+
+                     <div class="form-group form-row">
+                        <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Product Price</label>                     
+                        <div class="col-md-8 col-sm-8 mb-3">
+                            <input type="number" min="0" oninput="validity.valid||(value='');" class="form-control form-control-sm"  name='productPrice'
+                                [(ngModel)]="productData.productPrice" #productPrice="ngModel" required>
+                
+                            <div *ngIf="productPrice.invalid && (productPrice.dirty || productPrice.touched)" class="form-text text-danger">
+                                <div *ngIf="productPrice.errors.required"> Price is required. </div>
+                            </div>
+                        </div>
+                 </div>
+
+                 <div class="form-group form-row">
+                    <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Product Tax</label>                     
+                    <div class="col-md-8 col-sm-8 mb-3">
+                        <input type="number" min="0" oninput="validity.valid||(value='');" class="form-control form-control-sm"  name='productTax'
+                            [(ngModel)]="productData.productTax" #productTax="ngModel" required>
+            
+                        <div *ngIf="productTax.invalid && (productTax.dirty || productTax.touched)" class="form-text text-danger">
+                            <div *ngIf="productTax.errors.required"> Price is required. </div>
+                        </div>
+                    </div>
+             </div>
+
+             <div class="form-group form-row">
+                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Min. Qty</label>                     
+                <div class="col-md-8 col-sm-8 mb-3">
+                    <input type="number" min="0" oninput="validity.valid||(value='');" class="form-control form-control-sm"  name='minQty'
+                        [(ngModel)]="productData.minQty" #minQty="ngModel" required>
+        
+                    <div *ngIf="minQty.invalid && (minQty.dirty || minQty.touched)" class="form-text text-danger">
+                        <div *ngIf="minQty.errors.required">Min. Qty is required. </div>
+                    </div>
+                </div>
+                </div>
+        
+                <div class="form-group form-row">
+                    <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Max. Qty</label>                     
+
+                    <div class="col-md-8 col-sm-8 mb-3">
+
+                <input type="number" min="0" oninput="validity.valid||(value='');" class="form-control form-control-sm"  name='maxQty'
+                    [(ngModel)]="productData.maxQty" #maxQty="ngModel" required>
+    
+                <div *ngIf="maxQty.invalid && (maxQty.dirty || maxQty.touched)" class="form-text text-danger">
+                    <div *ngIf="maxQty.errors.required">Max. Qty is required. </div>
+                </div>
+            </div>
+     </div>
+    
+
+                         <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Cost Per Distance(KM)</label>                     
+                            <div class="col-md-8 col-sm-8 mb-3">
+                                <input type="number" min="0" oninput="validity.valid||(value='');" class="form-control form-control-sm"  name='costPerDistance'
+                                    [(ngModel)]="productData.costPerDistance" #costPerDistance="ngModel" required>
+                    
+                                <div *ngIf="costPerDistance.invalid && (costPerDistance.dirty || costPerDistance.touched)" class="form-text text-danger">
+                                    <div *ngIf="costPerDistance.errors.required"> Cost Per Distance is required. </div>
+                                </div>
+                            </div>
+                     </div>
+
+                     <div class="form-group form-row">
+                        <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Unloading Charges</label>                     
+                        <div class="col-md-8 col-sm-8 mb-3">
+                            <input type="number" min="0" oninput="validity.valid||(value='');" class="form-control form-control-sm"  name='unloadingCharges'
+                                [(ngModel)]="productData.unloadingCharges" #unloadingCharges="ngModel" required>
+                
+                            <div *ngIf="unloadingCharges.invalid && (unloadingCharges.dirty || unloadingCharges.touched)" class="form-text text-danger">
+                                <div *ngIf="unloadingCharges.errors.required">Unloading Charges is required. </div>
+                            </div>
+                        </div>
+                 </div>
+                 <div class="form-group form-row">
+                    <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Description</label>                     
+                    <div class="col-md-8 col-sm-8 mb-3">
+                    <!-- <gx-card card-title="FullPage Editor"> -->
+                        <ck-editor class="mb-4"
+                                   name="description"
+                                   [(ngModel)]="productData.description"
+                                    #description="ngModel"
+                                   [config]="config"
+                                   required
+                                   [fullPage]="fullPage"></ck-editor>
+                      <!-- </gx-card> -->
+                      <div *ngIf="description.invalid && (description.dirty || description.touched)"
+                      class="form-text text-danger">
+                      <div *ngIf="description.errors.required"> Description is required. </div>
+                  </div>
+                      </div>
+                </div>
+
+                <div class="form-group form-row" *ngIf="id != null">
+                    <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Image</label>                     
+                    <div class="col-md-8 col-sm-8 mb-3">
+                        <img  src="{{productData?.productImgURL}}" (click)="open(content,productData?.productImgURL)" width="100px" style="margin-left:20%;cursor: pointer;" alt="Brand Image"/>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Image</label>                     
+                    <div class="col-md-8 col-sm-8 mb-3">
+                        <!--  (change)="selectFile($event)" required -->
+                        <input #myInput type="file" class="form-control form-control-sm"  name='productImgURL'
+                            [(ngModel)]="productData.productImgURL" #productImgURL="ngModel"  (change)="selectFile($event)">
+                            <!--<div *ngIf="uploadsStatus">
+                                <img src="assets/images/loader.gif"  style="display: inline;"  width="5%" alt="loader" >Uploading...
+                            </div>-->
+                        <div *ngIf="productImgURL.invalid && (productImgURL.dirty || productImgURL.touched)" class="form-text text-danger">
+                            <div *ngIf="productImgURL.errors.required"> Image  is required. </div>
+                        </div>
+                    </div>
+             </div>
+             <div class="form-group form-row" *ngIf="id != null">
+                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Image</label>                     
+                <div class="col-md-2 col-sm-2 mb-3" *ngFor="let data of productData.productSubImageURL" style="display:inline;">
+                    <img  src="{{data}}" (click)="open(content,data)" width="100px" style="cursor: pointer;" alt="Adv Image"/>
+                </div>
+            </div>
+             <div class="form-group form-row">
+                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Images</label>                     
+                <div class="col-md-8 col-sm-8 mb-3">
+                     
+                      <input  #myInput type="file" class="form-control form-control-sm"  name='productSubImageURL' multiple="multiple"
+                      [(ngModel)]="productData.productSubImageURL" #productSubImageURL="ngModel" (change)="selectFileMultiple($event)">
+                    <!--<div *ngIf="uploadsStatus">
+                       <img src="assets/images/loader.gif"  style="display: inline;"  width="5%" alt="loader" >Uploading...
+                   </div>--> 
+               <div *ngIf="productSubImageURL.invalid && (productSubImageURL.dirty || productSubImageURL.touched)"
+                   class="form-text text-danger">
+                   <div *ngIf="productSubImageURL.errors.required"> Image is required. </div>
+               </div>
+           </div>                          
+           </div>
+
+
+
+
+  <!--  <div class="form-group form-row">
+
+    <label class="col-md-2 col-sm-3 col-form-label col-form-label-sm text-sm-right" for="normal-input-1">Image
+        </label>
+
+    <div class="col-md-4 col-sm-9 mb-1">
+            (change)="selectFile($event)" required
+   <input  #myInput type="file" class="form-control form-control-sm"  name='productMainImageUrl'
+    [(ngModel)]="productData.productMainImageUrl" #productMainImageUrl="ngModel" (change)="selectFile($event)">
+    
+<div *ngIf="uploadsStatus1">
+        <img src="assets/images/loader.gif"  style="display: inline;"  width="5%" alt="loader" >Uploading...
+    </div>
+        <div *ngIf="productMainImageUrl.invalid && (productMainImageUrl.dirty || productMainImageUrl.touched)"
+            class="form-text text-danger">
+            <div *ngIf="productMainImageUrl.errors.required"> Image is required. </div>
+        </div>
+    </div>
+ <label class="col-md-2 col-sm-3 col-form-label col-form-label-sm text-sm-right" for="normal-input-1">Image
+    </label>
+
+<div class="col-md-4 col-sm-9 mb-1">
+           (change)="selectFile($event)" required
+           <input  #myInput type="file" class="form-control form-control-sm"  name='productSubImageURL' multiple="multiple"
+           [(ngModel)]="productData.productSubImageURL" #productSubImageURL="ngModel" (change)="selectFileMultiple($event)">
+         <div *ngIf="uploadsStatus">
+            <img src="assets/images/loader.gif"  style="display: inline;"  width="5%" alt="loader" >Uploading...
+        </div> 
+    <div *ngIf="productSubImageURL.invalid && (productSubImageURL.dirty || productSubImageURL.touched)"
+        class="form-text text-danger">
+        <div *ngIf="productSubImageURL.errors.required"> Image is required. </div>
+    </div>
+</div>                          
+</div> -->
+
+                            <!-- <div class="form-group form-row">
+                                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Product Name</label>                     
+                                <div class="col-md-8 col-sm-8 mb-3">
+                                    <input type="text" class="form-control form-control-sm"  name='productName'
+                                        [(ngModel)]="product.productName" #productName="ngModel" required>
+                        
+                                    <div *ngIf="productName.invalid && (productName.dirty || productName.touched)" class="form-text text-danger">
+                                        <div *ngIf="productName.errors.required">Product Name is required. </div>
+                                    </div>
+                                </div>
+                         </div>
+                        <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Short Description</label>                     
+                            <div class="col-md-8 col-sm-8 mb-3">
+                           
+                                <ck-editor class="mb-4"
+                                           name="description"
+                                           [(ngModel)]="product.description"
+                                            #description="ngModel"
+                                           [config]="config"
+                                           required
+                                           [fullPage]="fullPage"></ck-editor>
+                            
+                              <div *ngIf="description.invalid && (description.dirty || description.touched)"
+                              class="form-text text-danger">
+                              <div *ngIf="description.errors.required">Short Description is required. </div>
+                          </div>
+                              </div>
+                        </div>
+                        <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Long Description</label>                     
+                            <div class="col-md-8 col-sm-8 mb-3">
+                         
+                                <ck-editor class="mb-4"
+                                           name="ldescription"
+                                           [(ngModel)]="product.ldescription"
+                                            #ldescription="ngModel"
+                                           [config]="config"
+                                           required
+                                           [fullPage]="fullPage"></ck-editor>
+                             
+                              <div *ngIf="ldescription.invalid && (ldescription.dirty || ldescription.touched)"
+                              class="form-text text-danger">
+                              <div *ngIf="ldescription.errors.required">Long Description is required. </div>
+                          </div>
+                              </div>
+                        </div>
+                        <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Image</label>                     
+                            <div class="col-md-8 col-sm-8 mb-3">
+                                <input type="file" class="form-control form-control-sm"  name='imageUrl'
+                                    [(ngModel)]="product.imageUrl" #imageUrl="ngModel" (change)="selectFile($event)" required>
+                    
+                                <div *ngIf="imageUrl.invalid && (imageUrl.dirty || imageUrl.touched)" class="form-text text-danger">
+                                    <div *ngIf="imageUrl.errors.required"> Image  is required. </div>
+                                </div>
+                            </div>
+                     </div> -->
+                        <div class="row">
+                            <button class="btn btn-primary" type="button" disabled *ngIf="uploadsStatus" style="margin-left: 40%;" >
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Loading...
+                              </button>
+                            <button class="btn btn-primary mr-2" style="margin-left: 40%;" [disabled]="productForm.invalid"  *ngIf="!uploadsStatus">Submit</button>
+                            <a class="btn btn-danger"  (click)="backClicked()" >Back</a>
+                        </div>
+                        </form>   
+                 </div>
+               </div>
+               </div>
+        </div>
+  </div>
+</div>
+
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-body">
+     <img  src="{{selectedObj.path}}" width="100%" height="100%" alt="subCategories Image"/>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-danger" (click)="c(selectedObj)">CLose</button>
+    </div>
+  </ng-template> 

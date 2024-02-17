@@ -1,0 +1,57 @@
+@import '../../../../styles.scss';
+.navbar{
+    .navbar-brand{
+        color: $white;
+    }
+    .dropdown-menu{
+        background-color: $grad2;
+        padding: 0;
+   
+        .dropdown-item{
+            color: $white;
+            &:hover{
+                background-color: $hover-color;
+                color: $base-text;
+            }
+        }
+    }
+    &.admin-header{
+        background: linear-gradient(34deg, $grad1 0%, $grad2 100%);
+    //     -webkit-box-shadow: 0 0.46875rem 2.1875rem rgba(4,9,20,.03), 0 0.9375rem 1.40625rem rgba(4,9,20,.03), 0 0.25rem 0.53125rem rgba(4,9,20,.05), 0 0.125rem 0.1875rem rgba(4,9,20,.03);
+    // box-shadow: 0 0.46875rem 2.1875rem rgba(4,9,20,.03), 0 0.9375rem 1.40625rem rgba(4,9,20,.03), 0 0.25rem 0.53125rem rgba(4,9,20,.05), 0 0.125rem 0.1875rem rgba(4,9,20,.03);
+    @include box-shadow( 0, 0, 8px, 0px, rgba(4, 0, 0, 0.1));
+    .mtl-icn{
+        display: grid;
+        cursor: pointer;
+        color: $white;
+    }
+    .navbar-nav{
+    .nav-item{
+        .nav-link{
+            color: $white;
+            padding: 0;
+           
+            // display: grid;
+            .material-icons{
+                padding: 0;
+                line-height: 0;
+            }
+        }
+    }
+}
+.logOut
+{
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  padding: .25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+    }
+}

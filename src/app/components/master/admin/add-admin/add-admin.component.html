@@ -1,0 +1,116 @@
+<div class="page-content-header">
+    <h3>{{ id == null  ? "Add " : "Update " }} Admin</h3>
+</div>
+<div class="page-content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card overall-contentblock">
+
+                    <div class="card-body">
+                        <form #registerForm='ngForm' novalidate (ngSubmit)="onSubmit(registerForm)">
+                    <div class="form-group form-row">
+      
+                        <label class="col-md-2 col-sm-3 col-form-label col-form-label-sm text-sm-right" for="normal-input-1">First Name<span class="star">*</span>
+                            </label>
+                    
+                        <div class="col-md-8 col-sm-9 mb-1">
+                            <input type="text"  class="form-control form-control-sm" name='firstName'
+                                [(ngModel)]="member.firstName" #firstName="ngModel" required>
+                    
+                            <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+                                class="form-text text-danger">
+                                <div *ngIf="firstName.errors.required"> First Name is required. </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="form-group form-row">
+                        <label class="col-md-2 col-sm-3 col-form-label col-form-label-sm text-sm-right" for="normal-input-1">Last Name<span class="star">*</span>
+                        </label>
+                        
+                    <div class="col-md-8 col-sm-9 mb-1">
+                        <input type="text"  class="form-control form-control-sm" name='lastName'
+                            [(ngModel)]="member.lastName" #lastName="ngModel" required>
+                
+                        <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                            class="form-text text-danger">
+                            <div *ngIf="lastName.errors.required"> Last Name is required. </div>
+                        </div>
+                    </div>                          
+                </div>
+                   
+                <div class="form-group form-row">
+      
+                    <label class="col-md-2 col-sm-3 col-form-label col-form-label-sm text-sm-right" for="normal-input-1">Email<span class="star">*</span>
+                        </label>
+                
+                    <div class="col-md-8 col-sm-9 mb-1">
+                        <input type="text"  class="form-control form-control-sm" name='email'
+                            [(ngModel)]="member.email" #email="ngModel" required>
+                
+                        <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                            class="form-text text-danger">
+                            <div *ngIf="email.errors.required">Email is required. </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="form-group form-row" *ngIf="id == null">
+      
+                        <label class="col-md-2 col-sm-3 col-form-label col-form-label-sm text-sm-right" for="normal-input-1">Password<span class="star">*</span>
+                            </label>
+                    
+                        <div class="col-md-8 col-sm-9 mb-1">
+                            <input type="password"  class="form-control form-control-sm" name='password'
+                                [(ngModel)]="member.password" #password="ngModel" required>
+                    
+                            <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                                class="form-text text-danger">
+                                <div *ngIf="password.errors.required"> Password required. </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="form-group form-row" *ngIf="id == null">
+                        <label class="col-md-2 col-sm-3 col-form-label col-form-label-sm text-sm-right" for="normal-input-1">Confirm Password<span class="star">*</span>
+                        </label>
+                        
+                        
+                    <div class="col-md-8 col-sm-9 mb-1">
+                        <input type="password"  class="form-control form-control-sm" name='confirmPassword'
+                            [(ngModel)]="member.confirmPassword" #confirmPassword="ngModel" required>
+                
+                        <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)"
+                            class="form-text text-danger">
+                            <div *ngIf="confirmPassword.errors.required"> Confirm Password required. </div>
+                        </div>
+                    </div>                        
+                    </div>
+                        <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-sm text-sm-right" for="normal-input-1">Phone<span class="star">*</span>
+                                </label>
+                        
+                            <div class="col-md-8 col-sm-9 mb-1">
+                                <input type="text"  class="form-control form-control-sm" name='phone'
+                                    [(ngModel)]="member.phone" #phone="ngModel" required>
+                        
+                                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                                    class="form-text text-danger">
+                                    <div *ngIf="phone.errors.required"> Mobile No is required. </div>
+                                    <span class="text-danger" *ngIf="f.phone.errors.required ">Mobile Number is required</span>  
+                                    <span class="text-danger" *ngIf="f.phone.errors.pattern">Please, Enter 10 digit Mobile Number</span>  
+                                </div>
+                            </div>
+                    </div>
+                    <!-- <div class="form-group text-center">
+                        <button  class="btn btn-sm btn-success">Register</button>
+                    </div> -->
+                    <div class="row">
+                        <button type="submit" class="btn btn-primary mr-2" style="margin-left: 40%;">{{ id == null  ? "SAVE" : "UPDATE" }}</button>
+                        <a class="btn btn-danger"  (click)="backClicked()" >Back</a>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+  </div>

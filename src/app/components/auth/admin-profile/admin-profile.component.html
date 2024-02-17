@@ -1,0 +1,154 @@
+<mat-tab-group mat-align-tabs="center" animationDuration="1000ms">
+    <mat-tab label="Profile">
+        <div class="page-content-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card overall-contentblock card-min-ht">
+                            <div class="overall-content-body ">                        
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label class="text-blue">Name</label>
+                                                    <p>{{adminData?.firstName +' '+ adminData?.lastName}}</p>
+                                                </div>                                      
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12 ">
+                                                    <label class="text-blue">Phone</label>
+                                                    <p>{{adminData?.phone}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">                                      
+                                                <div class="form-group col-md-12 ">
+                                                    <label class="text-blue">Role </label>
+                                                    <!-- <p>{{adminData?.address[0].addressLine}}</p>
+                                                    <p>{{adminData?.address[0].zipCode}}</p> -->
+                                                    <p>{{adminData?.role}}</p>
+                                                </div>
+                                              
+                                            </div>
+                                            <!-- <div class="form-row">
+                                                <div class="form-group col-md-12 ">
+                                                    <label class="text-blue">Image </label>
+                                                    <p>
+                                                        <a href="{{adminData?.profileUrl}}" class="btn btn-success btn-sm" target="_blank" download="{{adminData.profileUrl}}">
+                                                            <i class="fa fa-download" aria-hidden="true"></i> Download
+                                                        </a>
+                                                    </p>
+                                                </div>
+                                            </div> -->
+                                            
+                                        </div>
+                                         
+                                        <div class="col-md-6">
+                                            <div class="form-row">                                      
+                                                <div class="form-group col-md-12 ">
+                                        <img src="{{adminData?.profile_pic}}"  class="profileimg">
+                                                  
+                                                </div>
+                                              
+                                            </div>
+        
+                                            <!-- <div class="form-row">
+                                                <div class="form-group col-md-12 ">
+                                                    <label class="text-blue">{{adminData.govtId[0]['cardType']}} Card</label>
+                                                    <p>{{adminData.govtId[0]['cardNumber']}}</p>
+                                                </div>
+                                            </div> -->
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12 ">
+                                                    <label class="text-blue">Email</label>
+                                                    <p>{{adminData?.email}}</p>
+                                                </div>
+                                             
+                                              
+                                            </div>
+                                            <div class="form-row">                                      
+                                                <div class="form-group col-md-12 ">
+                                                    <label class="text-blue">Account Created On </label>
+                                                    <!-- <p>{{adminData?.address[0].addressLine}}</p>
+                                                    <p>{{adminData?.address[0].zipCode}}</p> -->
+                                                    <p>{{adminData?.createdAt | date: 'dd/MM/yyyy'}}</p>
+                                                </div>
+                                              
+                                            </div>
+                                          
+                                        </div>
+                                    </div>
+                                </form>                          
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+    </mat-tab>
+    <mat-tab label="Change Password">
+        <div class="page-content-body">
+            <div class="container-fluid">
+                <div class="card-body">
+                        <form #changePasswordForm='ngForm' novalidate (ngSubmit)="formSubmit(changePasswordForm)">
+                                   <div class="form-group form-row">
+                                       <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Current Password</label>                     
+                                       <div class="col-md-6 col-sm-6 mb-3">
+                                           <input  [type]="fieldTextType ? 'text' : 'password'" class="form-control form-control-sm"  name='currentPassword'
+                                               [(ngModel)]="Password.currentPassword" #currentPassword="ngModel" required>
+                                               <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i
+                                                    class="fa"
+                                                    [ngClass]="{
+                                                      'fa-eye-slash': !fieldTextType,
+                                                      'fa-eye': fieldTextType
+                                                    }"
+                                                    (click)="toggleFieldTextType()"
+                                                  ></i>
+                                                </span>
+                                             </div>
+                                           <div *ngIf="currentPassword.invalid && (currentPassword.dirty || currentPassword.touched)" class="form-text text-danger">
+                                               <div *ngIf="currentPassword.errors.required"> Current Password is required. </div>
+                                           </div>
+                                       </div>
+                                </div>
+                                <div class="form-group form-row">
+                                    <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">New Password</label>                     
+                                    <div class="col-md-6 col-sm-6 mb-3">
+                                        <input type="password"  class="form-control form-control-sm"  name='updatePassword'
+                                            [(ngModel)]="Password.updatePassword" #updatePassword="ngModel" required>
+                            
+                                        <div *ngIf="updatePassword.invalid && (updatePassword.dirty || updatePassword.touched)" class="form-text text-danger">
+                                            <div *ngIf="updatePassword.errors.required"> New Password is required. </div>
+                                        </div>
+                                    </div>
+                             </div>
+                             <div class="form-group form-row">
+                                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Confirm Password</label>                     
+                                <div class="col-md-6 col-sm-6 mb-3">
+                                    <input type="password" class="form-control form-control-sm"  name='confirmPassword'
+                                        [(ngModel)]="Password.confirmPassword" #confirmPassword="ngModel" (input)="passwordCheck()" required>
+                        
+                                    <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="form-text text-danger">
+                                        <div *ngIf="confirmPassword.errors.required && !passwordStatus"> Confirm Password is required. </div>
+                                    </div>
+                                    <div *ngIf="passwordStatus" class="text-danger">
+                                     New Password and Confirm Password Must Matchs
+                                    </div>
+                                </div>
+                         </div>
+                         <div class="row">
+                            <button class="btn btn-primary mr-2" style="margin-left: 40%;" [disabled]="changePasswordForm.invalid || passwordStatus">Submit</button>
+                        </div>
+                                </form>
+                        </div>
+                </div>
+           
+        </div>       
+    </mat-tab>
+  </mat-tab-group>
+  

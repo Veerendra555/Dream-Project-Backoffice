@@ -1,0 +1,29 @@
+@include respond-below(md) {
+    // header
+    .navbar{
+        .navbar-collapse {
+            flex-basis: 0;
+            flex-grow: 0;
+            display: contents;
+            
+        }
+    }
+    // sidemenu
+    .page-body{
+        &.pgbodyhalf{
+            width: 100%;
+            margin-left:0px!important ;
+        }
+    }
+    .page-sidebar{
+&.pgsidebarshow{
+    margin-left: -250px!important;
+}
+&.pgsidebarhide{
+    margin-left: 0px!important;
+}
+    }
+    .side-menu{
+        z-index: 1;
+    }
+}

@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import './assets/scss/base/variables';
+@import './assets/scss/base/mixins';
+@import './assets/scss/components/radiobtn';
+@import './assets/scss/components/buttons';
+@import './assets/scss/components/tables';
+@import './assets/scss/base/theme';
+@import './assets/scss/base/responsive';
+
+
+.star
+{
+    color: red;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+.multiselect-item-checkbox
+{
+   border-radius: 10px!important;
+
+}

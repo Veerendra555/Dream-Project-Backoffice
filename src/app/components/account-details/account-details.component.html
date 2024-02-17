@@ -1,0 +1,180 @@
+<div class="page-content-header">
+    <h3>{{ id == null  ? "ADD " : "UPDATE " }}Account-Details</h3>
+</div>
+<div class="page-content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card overall-contentblock">
+                    <div class="card-body">
+                        <form #accountForm='ngForm' novalidate (ngSubmit)="formSubmit(accountForm)">
+                            <div class="form-group form-row">
+                                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Bank Name</label>                     
+                                <div class="col-md-8 col-sm-8 mb-3">
+                                    <input type="text" class="form-control form-control-sm"  name='bankName'
+                                        [(ngModel)]="account.bankName" #bankName="ngModel" required>
+                        
+                                    <div *ngIf="bankName.invalid && (bankName.dirty || bankName.touched)" class="form-text text-danger">
+                                        <div *ngIf="bankName.errors.required"> Bank Name is required. </div>
+                                    </div>
+                                </div>
+                         </div>
+                         <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Branch Name</label>                     
+                            <div class="col-md-8 col-sm-8 mb-3">
+                                <input type="text" class="form-control form-control-sm"  name='branchName'
+                                    [(ngModel)]="account.branchName" #branchName="ngModel" required>
+                    
+                                <div *ngIf="branchName.invalid && (branchName.dirty || branchName.touched)" class="form-text text-danger">
+                                    <div *ngIf="branchName.errors.required"> Branch Name is required. </div>
+                                </div>
+                            </div>
+                     </div>
+                         <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Customer Name</label>                     
+                            <div class="col-md-8 col-sm-8 mb-3">
+                                <input type="text" class="form-control form-control-sm"  name='customerName'
+                                    [(ngModel)]="account.customerName" #customerName="ngModel" required>
+                    
+                                <div *ngIf="customerName.invalid && (customerName.dirty || customerName.touched)" class="form-text text-danger">
+                                    <div *ngIf="customerName.errors.required"> Customer Name is required. </div>
+                                </div>
+                            </div>
+                     </div>
+
+                         <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">IFSC Code</label>                     
+                            <div class="col-md-8 col-sm-8 mb-3">
+                                <input type="text" class="form-control form-control-sm"  name='ifscCode'
+                                    [(ngModel)]="account.ifscCode" #ifscCode="ngModel" required>
+                    
+                                <div *ngIf="ifscCode.invalid && (ifscCode.dirty || ifscCode.touched)" class="form-text text-danger">
+                                    <div *ngIf="ifscCode.errors.required">IFSC Code is required. </div>
+                                </div>
+                            </div>
+                     </div>
+
+                         <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Account Number</label>                     
+                            <div class="col-md-8 col-sm-8 mb-3">
+                                <input type="text" class="form-control form-control-sm"  name='accountNo'
+                                    [(ngModel)]="account.accountNo" #accountNo="ngModel" required>
+                    
+                                <div *ngIf="accountNo.invalid && (accountNo.dirty || accountNo.touched)" class="form-text text-danger">
+                                    <div *ngIf="accountNo.errors.required">Account Number is required. </div>
+                                </div>
+                            </div>
+                     </div>
+                     <div class="form-group form-row">
+                        <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Email</label>                     
+                        <div class="col-md-8 col-sm-8 mb-3">
+                            <input type="email" class="form-control form-control-sm"  name='email'
+                                [(ngModel)]="account.email" #email="ngModel" required>
+                
+                            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="form-text text-danger">
+                                <div *ngIf="email.errors.required">Email is required. </div>
+                            </div>
+                        </div>
+                 </div>
+                 <div class="form-group form-row">
+                    <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Phone Number</label>                     
+                    <div class="col-md-8 col-sm-8 mb-3">
+                        <input type="text" class="form-control form-control-sm"  name='phoneNo'
+                            [(ngModel)]="account.phoneNo" #phoneNo="ngModel" required>
+            
+                        <div *ngIf="phoneNo.invalid && (phoneNo.dirty || phoneNo.touched)" class="form-text text-danger">
+                            <div *ngIf="phoneNo.errors.required">Phone Number is required. </div>
+                        </div>
+                    </div>
+             </div>
+            
+
+                     <div class="form-group form-row">
+                        <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Whatsapp Number</label>                     
+                        <div class="col-md-8 col-sm-8 mb-3">
+                            <input type="text" class="form-control form-control-sm"  name='whatsAppNo'
+                                [(ngModel)]="account.whatsAppNo" #whatsAppNo="ngModel" required>
+                
+                            <div *ngIf="whatsAppNo.invalid && (whatsAppNo.dirty || whatsAppNo.touched)" class="form-text text-danger">
+                                <div *ngIf="whatsAppNo.errors.required">Whatsapp Number is required. </div>
+                            </div>
+                        </div>
+                 </div>
+                
+                   
+
+                
+                 <div class="form-group form-row">
+                    <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Phonepe Number</label>                     
+                    <div class="col-md-8 col-sm-8 mb-3">
+                        <input type="text" class="form-control form-control-sm"  name='phonePay'
+                            [(ngModel)]="account.phonePay" #phonePay="ngModel" required>
+            
+                        <div *ngIf="phonePay.invalid && (phonePay.dirty || phonePay.touched)" class="form-text text-danger">
+                            <div *ngIf="phonePay.errors.required">Phonepe is required. </div>
+                        </div>
+                    </div>
+             </div>
+             <div class="form-group form-row">
+                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Google Pay</label>                     
+                <div class="col-md-8 col-sm-8 mb-3">
+                    <input type="text" class="form-control form-control-sm"  name='googlePay'
+                        [(ngModel)]="account.googlePay" #googlePay="ngModel" required>
+        
+                    <div *ngIf="googlePay.invalid && (googlePay.dirty || googlePay.touched)" class="form-text text-danger">
+                        <div *ngIf="googlePay.errors.required">Google Pay is required. </div>
+                    </div>
+                </div>
+         </div>
+
+         <div class="form-group form-row">
+            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Facebook</label>                     
+            <div class="col-md-8 col-sm-8 mb-3">
+                <input type="text" class="form-control form-control-sm"  name='fbLink'
+                    [(ngModel)]="account.fbLink" #fbLink="ngModel" required>
+    
+                <div *ngIf="fbLink.invalid && (fbLink.dirty || fbLink.touched)" class="form-text text-danger">
+                    <div *ngIf="fbLink.errors.required">Facebook is required. </div>
+                </div>
+            </div>
+     </div>
+
+     <div class="form-group form-row">
+        <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Youtube</label>                     
+        <div class="col-md-8 col-sm-8 mb-3">
+            <input type="text" class="form-control form-control-sm"  name='youtubeLink'
+                [(ngModel)]="account.youtubeLink" #youtubeLink="ngModel" required>
+
+            <div *ngIf="youtubeLink.invalid && (youtubeLink.dirty || youtubeLink.touched)" class="form-text text-danger">
+                <div *ngIf="youtubeLink.errors.required">Facebook is required. </div>
+            </div>
+        </div>
+ </div>
+     <div class="form-group form-row">
+        <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Twitter</label>                     
+        <div class="col-md-8 col-sm-8 mb-3">
+            <input type="text" class="form-control form-control-sm"  name='twitterLink'
+                [(ngModel)]="account.twitterLink" #twitterLink="ngModel" required>
+    
+            <div *ngIf="twitterLink.invalid && (twitterLink.dirty || twitterLink.touched)" class="form-text text-danger">
+                <div *ngIf="twitterLink.errors.required">Google Pay is required. </div>
+            </div>
+        </div>
+    </div>
+     <div class="form-group form-row">
+        <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Instagram</label>                     
+        <div class="col-md-8 col-sm-8 mb-3">
+            <input type="text" class="form-control form-control-sm"  name='instaLink'
+                [(ngModel)]="account.instaLink" #instaLink="ngModel" required>
+
+            <div *ngIf="instaLink.invalid && (instaLink.dirty || instaLink.touched)" class="form-text text-danger">
+                <div *ngIf="instaLink.errors.required">Google Pay is required. </div>
+            </div>
+        </div>
+ </div>
+ 
+         <div class="row">
+            <button class="btn btn-primary mr-2" style="margin-left: 40%;" [disabled]="accountForm.invalid">Save</button>
+            
+        </div>
+        </form>   

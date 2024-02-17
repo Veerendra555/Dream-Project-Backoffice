@@ -1,0 +1,108 @@
+<div class="page-content-header">
+    <h3>{{ id == null  ? "ADD " : "UPDATE " }} Event</h3>
+</div>
+<div class="page-content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card overall-contentblock">
+                    <div class="card-body">
+                        <form #eventForm='ngForm' novalidate (ngSubmit)="formSubmit(eventForm)">
+                            <div class="form-group form-row">
+                                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Event Name</label>                     
+                                <div class="col-md-8 col-sm-8 mb-3">
+                                    <input type="text" class="form-control form-control-sm"  name='eventName'
+                                        [(ngModel)]="event.eventName" #eventName="ngModel" required>
+                        
+                                    <div *ngIf="eventName.invalid && (eventName.dirty || eventName.touched)" class="form-text text-danger">
+                                        <div *ngIf="eventName.errors.required">Event Name is required. </div>
+                                    </div>
+                                </div>
+                         </div>
+                    
+                        
+                     <div class="form-group form-row">
+                        <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Event Date</label>                     
+                        <div class="col-md-8 col-sm-8 mb-3">
+                            <input type="date" class="form-control form-control-sm"  name='eventDate'
+                                [(ngModel)]="event.eventDate" #eventDate="ngModel" required>
+                                </div>
+                                </div>
+
+                                <div class="form-group form-row">
+                                    <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Event Time</label>                     
+                                    <div class="col-md-8 col-sm-8 mb-3">
+                                        <input type="time" class="form-control form-control-sm"  name='eventTime'
+                                            [(ngModel)]="event.eventTime" #eventTime="ngModel" required>
+                                            </div>
+                                            </div>
+
+                                            <div class="form-group form-row">
+                                           
+                                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="address">Event Address</label>
+                                            <div class="col-md-8 col-sm-8 mb-3">
+                                               
+                                            <textarea id="eventAddress" class="form-control form-control-sm" name="eventAddress" rows="4" cols="50"
+                                            [(ngModel)]="event.eventAddress" #eventAddress="ngModel">
+                                            </textarea>
+                                            
+                                          
+</div>
+            
+                       </div>
+                       <div class="form-group form-row">
+                        <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Event Location</label>                     
+                        <div class="col-md-8 col-sm-8 mb-3">
+                            <input type="text" class="form-control form-control-sm"  name='eventLocation'
+                                [(ngModel)]="event.eventLocation" #eventLocation="ngModel" required>
+                                </div>
+                                </div>
+
+                       <div class="form-group form-row">
+                        <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1"> Image </label>                     
+                        <div class="col-md-8 col-sm-8 mb-3">
+                            <!--   -->
+                            <input #myInput type="file" class="form-control form-control-sm"  name='eventImageUrl'
+                                [(ngModel)]="event.eventImageUrl" #eventImageUrl="ngModel" (change)="selectFile($event)">
+                                
+                                <!-- <div *ngIf="uploadsStatus">
+                                    <img src="assets/images/loader.gif"  style="display: inline;"  width="5%" alt="loader" >Uploading...
+                                </div> -->
+                            <div *ngIf="eventImageUrl.invalid && (eventImageUrl.dirty || eventImageUrl.touched)" class="form-text text-danger">
+                                <div *ngIf="eventImageUrl.errors.required"> Image  is required. </div>
+                            </div>
+                          
+                        </div>
+                        
+                    </div>
+                                            
+                        <div class="row">
+                           
+                            <button class="btn btn-primary" type="button" disabled *ngIf="uploadsStatus" style="margin-left: 40%;" >
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Loading...
+                              </button>
+                            <button class="btn btn-primary mr-2" style="margin-left: 40%;" [disabled]="eventForm.invalid" *ngIf="!uploadsStatus">
+                                Submit</button>
+                                <a class="btn btn-danger" (click)="backClicked()">Back</a>
+                        </div>
+                        </form>   
+                     
+                           
+                 </div>
+               </div>
+               </div>
+        </div>
+  </div>
+</div>
+
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-body">
+     <img  src="{{selectedObj.path}}" width="100%" height="100%" alt="subCategories Image"/>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-danger" (click)="c(selectedObj)">CLose</button>
+    </div>
+  </ng-template>

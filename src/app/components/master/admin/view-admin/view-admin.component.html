@@ -1,0 +1,81 @@
+<div class="card">
+    <div class="card-header page-content-header">
+        <div class="row">
+            <div class="col-md-3">
+                    <h3>Admin</h3>
+            </div>
+            <div class="col-md-8">
+                <button class="btn btn-success" [routerLink]="['/add-admins']" style="float:right;">+ Admin</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+       <div class="table-responsive">
+           <table  datatable   [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" class="table table-bordered table-striped table-hover">
+               <thead style="background-color:#fb9013;">
+                   <tr>
+                       <th>
+                           S NO
+                       </th>
+                       <th>
+                           Name
+                    </th>
+                    <th>
+                        Email
+                     </th>
+                     <th>
+                        Phone
+                     </th>
+                     <th>
+                        Role
+                     </th>
+                       <th>
+                         Status
+                      </th>
+                     <th>
+                       Actions
+                  </th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr *ngFor="let member of adminData;let i = index;">
+                       <td >{{i+1}}</td>
+                       <td>{{member?.firstName +' '+member?.lastName}}</td>
+                       <td>{{member?.email}}</td>
+                       <td>{{member?.phone}}</td>
+                       <td>{{member?.role}}</td>
+                       <td>
+                           <div class="custom-control custom-switch">
+                               <input
+                                 type="checkbox"
+                                 class="custom-control-input"
+                                 [checked]="member.isActive == true"
+                                 id="{{ member._id }}"
+                                 (change)="changeAdminStatus(member)"
+                               />
+                               <label
+                                 class="custom-control-label"
+                                 for="{{ member._id }}"
+                                 style="cursor: pointer;"
+                               ></label>
+                             </div>
+                             
+                       </td>
+                       <td>
+                           <img  src="assets/images/edit.png"  height="25px" (click)="editData(member._id)"  />
+                           <img  src="assets/images/delete.png" (click)="deleteMember(member)"  height="25px"  />  
+                           <!-- <img  src="assets/images/more.png"  (click)="viewData(categorie)"  height="25px"  />   -->
+                       </td>
+                   </tr>
+               </tbody>
+           </table>
+        </div> 
+    </div>
+</div>  
+<!-- <div *ngIf="warningStatus" class="alert alert-danger alert-dismissible fade show" role="alert">
+   <strong> First Delete All SubCategorie Assign To This Categorie</strong>
+   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+     <span aria-hidden="true">&times;</span>
+   </button>
+ </div> -->

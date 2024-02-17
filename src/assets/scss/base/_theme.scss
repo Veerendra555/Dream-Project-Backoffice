@@ -1,0 +1,164 @@
+body {
+    background-color: $light-grey;
+    color: $base-text;
+    font-family: $poppins;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: $nunito;
+}
+
+.text-blue {
+    color: $blue;
+}
+
+.text-red {
+    color: $red;
+}
+
+.text-green {
+    color: $green;
+}
+
+// overall-styles start
+.dropdown-list {
+    z-index: 9;
+}
+
+.crsr-pointer {
+    cursor: pointer;
+}
+
+.overall-ht-box {
+    height: 100vh;
+}
+
+.card-min-ht {
+    min-height: 70vh;
+}
+
+chart-legend {
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translateY(-50%);
+}
+
+.page-content-header {
+    width: 100%;
+    padding: 25px 25px 25px 25px;
+    h3 {
+        margin: 0;
+        font-weight: 800;
+        text-transform :capitalize;
+        span {
+            &.hd-date {
+                font-size: 20px;
+                color: $red;
+                position: relative;
+                top: 7px;
+            }
+        }
+    }
+}
+
+.page-content-body {
+    padding: 0px 15px 15px 15px;
+}
+
+.card {
+    border: 0;
+    &.overall-contentblock {
+        @include box-shadow( 1px, 5px, 24px, 0px, rgba(68, 102, 242, 0.1));
+        margin-bottom: 25px;
+        .overall-content-header {
+            h4 {
+                padding: 25px 25px 0 25px;
+                margin: 0;
+                font-weight: 800;
+            }
+        }
+        .overall-content-body {
+            padding: 15px 15px 15px 15px;
+            h5 {
+                font-weight: 800;
+            }
+        }
+    }
+    &.widget-block {
+        border-radius: 0px;
+        border: 0;
+        color: $white;
+        @include box-shadow( 0px, 0, 6px, 0px, rgba(4, 0, 0, 0.2));
+        @include transition(all, 0.3s, ease);
+        &.widget-block-1 {
+            background-color: #ffbc58;
+        }
+        &.widget-block-2 {
+            background-color: #13c9ca;
+        }
+        &.widget-block-3 {
+            background-color: #ff8084;
+        }
+        &.widget-block-4 {
+            background-color: #a5a5a5;
+        }
+        .widget-text {
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        h4 {
+            margin: 0;
+            font-weight: 700;
+        }
+    }
+}
+
+.total-sites {
+    display: inline-block;
+    padding-bottom: 15px;
+    li {
+        float: left;
+        font-weight: 600;
+        padding-right: 25px;
+        font-size: 16px;
+        position: relative;
+        &:after {
+            content: "|";
+            position: absolute;
+            right: 10px;
+            bottom: 2px;
+        }
+        &:last-child {
+            &:after {
+                content: '';
+            }
+        }
+    }
+}
+
+// overall-styles end

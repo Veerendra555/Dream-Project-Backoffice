@@ -1,0 +1,128 @@
+<div class="page-content-header">
+    <h3>{{ id == null  ? "ADD " : "UPDATE " }} Brand</h3>
+</div>
+<div class="page-content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card overall-contentblock">
+
+                    <div class="card-body">
+                        <form #brandForm='ngForm' novalidate (ngSubmit)="formSubmit(brandForm)">
+                            <div class="form-group form-row">
+                                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Brand Name</label>                     
+                                <div class="col-md-8 col-sm-8 mb-3">
+                                    <input type="text" class="form-control form-control-sm"  name='brandName'
+                                        [(ngModel)]="brand.brandName" #brandName="ngModel" required>
+                        
+                                    <div *ngIf="brandName.invalid && (brandName.dirty || brandName.touched)" class="form-text text-danger">
+                                        <div *ngIf="brandName.errors.required">Brand Name is required. </div>
+                                    </div>
+                                </div>
+                         </div>
+                       
+                        <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Description</label>                     
+                            <div class="col-md-8 col-sm-8 mb-3">
+                            <!-- <gx-card card-title="FullPage Editor"> -->
+                                <ck-editor class="mb-4"
+                                           name="brandLongDescription"
+                                           [(ngModel)]="brand.description"
+                                            #description="ngModel"
+                                           [config]="config"
+                                           required
+                                           [fullPage]="fullPage"></ck-editor>
+                              <!-- </gx-card> -->
+                              <div *ngIf="description.invalid && (description.dirty || description.touched)"
+                              class="form-text text-danger">
+                              <div *ngIf="description.errors.required">Description is required. </div>
+                          </div>
+                              </div>
+                        </div>
+                       <div class="form-group form-row" *ngIf="id != null">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Image</label>                     
+                            <div class="col-md-8 col-sm-8 mb-3">
+                                <img  src="{{brand?.brandImgUrl}}" (click)="open(content,brand?.brandImgUrl)" width="100px" style="margin-left:20%;cursor: pointer;" alt="Brand Image"/>
+                            </div>
+                        </div>
+                        <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Image</label>                     
+                            <div class="col-md-8 col-sm-8 mb-3">
+                                <!--  (change)="selectFile($event)" required -->
+                                <input #myInput type="file" class="form-control form-control-sm"  name='brandImgUrl'
+                                    [(ngModel)]="brand.brandImgUrl" #brandImgUrl="ngModel"  (change)="selectFile($event,'image')">
+                                    <!--<div *ngIf="uploadsStatus">
+                                        <img src="assets/images/loader.gif"  style="display: inline;"  width="5%" alt="loader" >Uploading...
+                                    </div>-->
+                                <div *ngIf="brandImgUrl.invalid && (brandImgUrl.dirty || brandImgUrl.touched)" class="form-text text-danger">
+                                    <div *ngIf="brandImgUrl.errors.required"> Image  is required. </div>
+                                </div>
+                            </div>
+                     </div>
+
+                     <div class="form-group form-row" *ngIf="id != null">
+                        <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Image</label>                     
+                        <div class="col-md-8 col-sm-8 mb-3">
+                            <img  src="{{brand?.coverImageUrl}}" (click)="open(content,brand?.coverImageUrl)" width="100px" style="margin-left:20%;cursor: pointer;" alt="Cover Image"/>
+                        </div>
+                    </div>
+                     <div class="form-group form-row">
+                        <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Cover Image</label>                     
+                        <div class="col-md-8 col-sm-8 mb-3">
+                            <!--  (change)="selectFile($event)" required -->
+                            <input #myInput type="file" class="form-control form-control-sm"  name='coverImageUrl'
+                                [(ngModel)]="brand.coverImageUrl" #coverImageUrl="ngModel"  (change)="selectFile($event,'cover')">
+                                <!--<div *ngIf="uploadsStatus">
+                                    <img src="assets/images/loader.gif"  style="display: inline;"  width="5%" alt="loader" >Uploading...
+                                </div>-->
+                            <div *ngIf="coverImageUrl.invalid && (coverImageUrl.dirty || coverImageUrl.touched)" class="form-text text-danger">
+                                <div *ngIf="coverImageUrl.errors.required"> Image  is required. </div>
+                            </div>
+                        </div>
+                 </div>
+                 <div class="form-group form-row" *ngIf="id != null">
+                    <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Image</label>                     
+                    <div class="col-md-2 col-sm-2 mb-3" *ngFor="let data of brand.advertiseImageUrl" style="display:inline;">
+                        <img  src="{{data}}" (click)="open(content,data)" width="100px" style="cursor: pointer;" alt="Adv Image"/>
+                    </div>
+                </div>
+                 <!--<div class="form-group form-row">
+                    <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Advertisement Images</label>                     
+                    <div class="col-md-8 col-sm-8 mb-3">
+                          (change)="selectFile($event)" required
+                        <input #myInput type="file" class="form-control form-control-sm"  name='advertiseImageUrl'
+                            [(ngModel)]="brand.advertiseImageUrl" #advertiseImageUrl="ngModel"  (change)="selectFileMultiple($event)" multiple="multiple">
+                            <div *ngIf="uploadsStatus">
+                                <img src="assets/images/loader.gif"  style="display: inline;"  width="5%" alt="loader" >Uploading...
+                            </div>
+                        <div *ngIf="advertiseImageUrl.invalid && (advertiseImageUrl.dirty || advertiseImageUrl.touched)" class="form-text text-danger">
+                            <div *ngIf="advertiseImageUrl.errors.required"> Image  is required. </div>
+                        </div>
+                    </div>
+             </div>-->
+                     
+                        <div class="row">
+                            <button class="btn btn-primary" type="button" disabled *ngIf="uploadsStatus" style="margin-left: 40%;" >
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Loading...
+                              </button>
+                            <button class="btn btn-primary mr-2" style="margin-left: 40%;" [disabled]="brandForm.invalid" *ngIf="!uploadsStatus">Submit</button>
+                            <a class="btn btn-danger"  (click)="backClicked()" >Back</a>
+                        </div>
+                        </form>   
+                 </div>
+               </div>
+               </div>
+        </div>
+  </div>
+</div>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-body">
+     <img  src="{{selectedObj.path}}" width="100%" height="100%" alt="subCategories Image"/>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-danger" (click)="c(selectedObj)">CLose</button>
+    </div>
+  </ng-template> 

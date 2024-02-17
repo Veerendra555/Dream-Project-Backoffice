@@ -1,0 +1,177 @@
+<div class="page-content-header">
+    <h3>Contact Details</h3>
+</div>
+<div class="page-content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card overall-contentblock">
+
+                    <div class="card-body">
+                        <form #contactForm='ngForm' novalidate (ngSubmit)="formSubmit()">
+                            <div class="form-group form-row">
+                                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Full Name<span class="star">*</span></label>                      
+                                <div class="col-md-8 col-sm-8 mb-3">
+                                    <input type="text" class="form-control form-control-sm"  name='fullName'  [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="contactData.fullName" #fullName="ngModel" required>
+                        
+                                    <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)" class="form-text text-danger">
+                                        <div *ngIf="fullName.errors.required"> Full Name is required. </div>
+                                    </div>
+                                </div>
+                         </div>
+                         <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Email<span class="star">*</span></label>                      
+                            <div class="col-md-8 col-sm-8 mb-3">
+                                <input type="email" class="form-control form-control-sm"  name='email' email  [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="contactData.email" #email="ngModel" required>
+                    
+                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="form-text text-danger">
+                                    <div *ngIf="email.errors.required">Email is required. </div>
+                                     <div *ngIf="email.errors.email">Email is not valid. </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Phone<span class="star">*</span></label>                      
+                            <div class="col-md-8 col-sm-8 mb-3">
+                                <input type="number" class="form-control form-control-sm"  name='phone' [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="contactData.phone" #phone="ngModel" required>
+                                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="form-text text-danger">
+                                    <div *ngIf="phone.errors.required"> phone number is required. </div>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Latitude<span class="star">*</span></label>                      
+                            <div class="col-md-3 col-sm-8 mb-3">
+                                <input type="text" class="form-control form-control-sm"  name='lat'  [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="contactData.lat" #lat="ngModel" required>
+                    
+                                <div *ngIf="lat.invalid && (lat.dirty || lat.touched)" class="form-text text-danger">
+                                    <div *ngIf="lat.errors.required"> Latitude is required. </div>
+                                </div>
+                            </div>
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Longitude<span class="star">*</span></label>                      
+                            <div class="col-md-3 col-sm-8 mb-3">
+                                <input type="text" class="form-control form-control-sm"  name='long'  [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="contactData.long" #long="ngModel" required>
+                    
+                                <div *ngIf="long.invalid && (long.dirty || long.touched)" class="form-text text-danger">
+                                    <div *ngIf="long.errors.required"> Longitude is required. </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Facebook Link<span class="star">*</span></label>                      
+                            <div class="col-md-8 col-sm-8 mb-3">
+                                <input type="text" class="form-control form-control-sm"  name='fbPageUrl'  [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="contactData.fbPageUrl" #fbPageUrl="ngModel" required>
+                    
+                                <div *ngIf="fbPageUrl.invalid && (fbPageUrl.dirty || fbPageUrl.touched)" class="form-text text-danger">
+                                    <div *ngIf="fbPageUrl.errors.required"> Fb Link is required. </div>
+                                </div>
+                            </div>
+                     </div>
+                     <div class="form-group form-row">
+                        <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">YouTube Link<span class="star">*</span></label>                      
+                        <div class="col-md-8 col-sm-8 mb-3">
+                            <input type="text" class="form-control form-control-sm"  name='youTubePageUrl'  [ngModelOptions]="{standalone: true}"
+                                [(ngModel)]="contactData.youTubePageUrl" #youTubePageUrl="ngModel" required>
+                
+                            <div *ngIf="youTubePageUrl.invalid && (youTubePageUrl.dirty || youTubePageUrl.touched)" class="form-text text-danger">
+                                <div *ngIf="youTubePageUrl.errors.required"> YouTube Link is required. </div>
+                            </div>
+                        </div>
+                 </div>
+                 <div class="form-group form-row">
+                    <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Linkedin Link<span class="star">*</span></label>                      
+                    <div class="col-md-8 col-sm-8 mb-3">
+                        <input type="text" class="form-control form-control-sm"  name='linkedInPageUrl'  [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="contactData.linkedInPageUrl" #linkedInPageUrl="ngModel" required>
+            
+                        <div *ngIf="linkedInPageUrl.invalid && (linkedInPageUrl.dirty || linkedInPageUrl.touched)" class="form-text text-danger">
+                            <div *ngIf="linkedInPageUrl.errors.required"> Linked In Link is required. </div>
+                        </div>
+                    </div>
+             </div>
+             <div class="form-group form-row">
+                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Twitter Link<span class="star">*</span></label>                      
+                <div class="col-md-8 col-sm-8 mb-3">
+                    <input type="text" class="form-control form-control-sm"  name='twitterPageUrl'  [ngModelOptions]="{standalone: true}"
+                        [(ngModel)]="contactData.twitterPageUrl" #twitterPageUrl="ngModel" required>
+        
+                    <div *ngIf="twitterPageUrl.invalid && (twitterPageUrl.dirty || twitterPageUrl.touched)" class="form-text text-danger">
+                        <div *ngIf="twitterPageUrl.errors.required"> Twitter Link is required. </div>
+                    </div>
+                </div>
+         </div>
+                     <div class="form-group form-row">
+                        <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Insta Link<span class="star">*</span></label>                      
+                        <div class="col-md-8 col-sm-8 mb-3">
+                            <input type="text" class="form-control form-control-sm"  name='instalPageUrl'  [ngModelOptions]="{standalone: true}"
+                                [(ngModel)]="contactData.instalPageUrl" #instalPageUrl="ngModel" required>
+                
+                            <div *ngIf="instalPageUrl.invalid && (instalPageUrl.dirty || instalPageUrl.touched)" class="form-text text-danger">
+                                <div *ngIf="instalPageUrl.errors.required"> Instal Link is required. </div>
+                            </div>
+                        </div>
+                 </div>
+                 <div class="form-group form-row">
+                    <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Company Link<span class="star">*</span></label>                      
+                    <div class="col-md-8 col-sm-8 mb-3">
+                        <input type="text" class="form-control form-control-sm"  name='companyWebsiteUrl'  [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="contactData.companyWebsiteUrl" #companyWebsiteUrl="ngModel" required>
+            
+                        <div *ngIf="companyWebsiteUrl.invalid && (companyWebsiteUrl.dirty || companyWebsiteUrl.touched)" class="form-text text-danger">
+                            <div *ngIf="companyWebsiteUrl.errors.required"> Company Website  Link is required. </div>
+                        </div>
+                    </div>
+             </div>
+             <div class="form-group form-row">
+                <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Address <span class="star">*</span></label>                      
+                <div class="col-md-8 col-sm-8 mb-3">
+                    <textarea class="form-control form-control-sm" rows="6" name='address'  [ngModelOptions]="{standalone: true}"
+                    [(ngModel)]="contactData.address" #address="ngModel" required></textarea>
+                    <div *ngIf="address.invalid && (address.dirty || address.touched)" class="form-text text-danger">
+                        <div *ngIf="address.errors.required"> Address is required. </div>
+                    </div>
+                </div>
+         </div>
+                        
+                        <!-- <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Role<span class="star">*</span></label>                      
+                            <div class="col-md-8 col-sm-8 mb-3">
+                             <select [(ngModel)]="contactData.role" #role="ngModel" name='role' required class="form-control">
+                                   <option  value="" selected>-Select-</option>
+                                   <option value="Admin">Admin</option>
+                                   <option value="Manager">Manager</option>
+                                   <option value="Employee">Employee</option>
+                               </select>
+                                <div *ngIf="role.invalid && (role.dirty || role.touched)" class="form-text text-danger">
+                                    <div *ngIf="role.errors.required"> role is required. </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="form-group form-row">
+                            <label class="col-md-2 col-sm-3 col-form-label col-form-label-md text-sm-right" for="normal-input-1">Image<span class="star">*</span></label>                      
+                            <div class="col-md-8 col-sm-8 mb-3">
+                                <input type="file" class="form-control form-control-sm"  name='imageUrl'
+                                    [(ngModel)]="contactData.imageUrl" #imageUrl="ngModel" (change)="selectFile($event)" required>
+                    
+                                <div *ngIf="imageUrl.invalid && (imageUrl.dirty || imageUrl.touched)" class="form-text text-danger">
+                                    <div *ngIf="imageUrl.errors.required"> Image  is required. </div>
+                                </div>
+                            </div>
+                       </div> -->
+                        <div class="row">
+                            <button class="btn btn-primary mr-2" style="margin-left: 45%;" [disabled]="contactForm.invalid">Save</button>
+                            <!-- <a class="btn btn-danger"  (click)="backClicked()" >Back</a> -->
+                        </div>
+                        </form>   
+                 </div>
+               </div>
+               </div>
+        </div>
+  </div>
+</div>

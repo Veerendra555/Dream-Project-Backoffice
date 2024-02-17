@@ -1,0 +1,11 @@
+<div class="pg-header">
+<app-header></app-header>
+</div>
+<div class="page-wrapper">
+<div class="page-sidebar pgsidebarshow " [ngClass] ="{ pgsidebarhide: _sharedata.isShowSideMenu }">
+    <app-sidemenu></app-sidemenu>
+</div>
+<div class="page-body pgbodyhalf" [ngClass] ="{ pgbodyfull: _sharedata.isShowSideMenu }">
+    <router-outlet></router-outlet>    
+</div>
+</div>

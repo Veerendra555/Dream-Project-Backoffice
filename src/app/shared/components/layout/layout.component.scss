@@ -1,0 +1,37 @@
+@import '../../../../styles.scss';
+.pg-header {
+    width: 100%;
+}
+
+.page-wrapper {
+    overflow-x: hidden;
+}
+
+.page-sidebar {
+    width: 250px;
+    &.pgsidebarshow {
+        margin-left: 0;
+        // @include transition(all, 0.5s, ease-in-out);
+        transition: 0.3s;
+    }
+    &.pgsidebarhide {
+        margin-left: -250px;
+        // @include transition(all, 0.5s, ease-in-out);
+        transition: 0.3s;
+    }
+}
+
+.page-body {
+    padding-top: 60px;
+    min-height: calc(100% - 60px);
+    &.pgbodyhalf {
+        margin-left: 250px;
+        transition: 0.3s;
+        // @include transition(all, 0.5s, ease-in-out);
+    }
+    &.pgbodyfull {
+        margin-left: 0;
+        transition: 0.3s;
+        // @include transition(all, 0.5s, ease-in-out);
+    }
+}
